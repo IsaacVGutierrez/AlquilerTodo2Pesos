@@ -18,13 +18,13 @@ namespace AlquilerBD
 
         public DbSet<ProductoAlquilado> ProductosAlquilados { get; set; }
 
-        public DbSet<ProductoPublicado> ProductsoPublicados { get; set; }
+        public DbSet<ProductoPublicado> ProductosPublicados { get; set; }
 
         public DbSet<Direccion> Direcciones { get; set; }
 
         public DbSet<TipoDocumento> TipoDocumentos { get; set; }
 
-
+        public DbSet<Categoria> Categorias { get; set; }
         public DbSet<Estado> Estados { get; set; }
 
     }

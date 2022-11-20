@@ -9,9 +9,9 @@ namespace AlquilerBD.Data.Entidades
     public class Categoria
     {
 
-        public int id { get; set; }
+        public int Id { get; set; }
 
-        public string categoria { get; set; }
+        public string NombCategoria { get; set; }
 
         public List<ProductoPublicado> ProductosPublicados { get; set; }
     }

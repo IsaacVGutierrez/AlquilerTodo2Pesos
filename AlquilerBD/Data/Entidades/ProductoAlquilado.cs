@@ -31,7 +31,7 @@ namespace AlquilerBD.Data.Entidades
 
         [Required]
 
-        public int Personaid { get; set; }
+        public int PersonaId { get; set; }
         public Persona Persona { get; set; }
     }
 }

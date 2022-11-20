@@ -6,41 +6,37 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AlquilerTodo2Pesos.Server.Controllers
 {
-    [Route("api/ProductoPublicado")]
+    [Route("api/ProductosAlquilados")]
     [ApiController]
-    public class ProductoPublicadoController : ControllerBase
+    public class ProductoAlquiladoController : ControllerBase
     {
-
         private readonly BdContext context;
 
-        public ProductoPublicadoController(BdContext context)
+        public ProductoAlquiladoController(BdContext context)
         {
             this.context = context;
         }
 
 
-
-
         [HttpGet]
-        public async Task<ActionResult<List<ProductoPublicado>>> Get()
+        public async Task<ActionResult<List<ProductoAlquilado>>> Get()
         {
-            return await context.ProductosPublicados
+            return await context.ProductosAlquilados
 
-                                           .Include(m => m.Categoria)
+
                                          .Include(m => m.Estado)
                                           .Include(m => m.Persona)
                                              .ToListAsync();
 
-
+          
         }
 
         [HttpGet("{id:int}")]
-        public async Task<ActionResult<ProductoPublicado>> Get(int id)
+        public async Task<ActionResult<ProductoAlquilado>> Get(int id)
         {
-            var venta = await context.ProductosPublicados
+            var venta = await context.ProductosAlquilados
                                          .Where(e => e.Id == id)
-
-                                           .Include(m => m.Categoria)
+                                         
                                          .Include(m => m.Estado)
                                           .Include(m => m.Persona)
                                          .FirstOrDefaultAsync();
@@ -52,13 +48,14 @@ namespace AlquilerTodo2Pesos.Server.Controllers
             return venta;
         }
 
+
         [HttpPost]
-        public async Task<ActionResult<List<ProductoPublicado>>> Post(ProductoPublicado producto)
+        public async Task<ActionResult<List<ProductoAlquilado>>> Post(ProductoAlquilado producto)
         {
             try
             {
 
-                context.ProductosPublicados.Add(producto);
+                context.ProductosAlquilados.Add(producto);
                 await context.SaveChangesAsync();
                 return Ok(producto);
             }
@@ -68,10 +65,8 @@ namespace AlquilerTodo2Pesos.Server.Controllers
             }
         }
 
-
-
         [HttpPut("{id:int}")]
-        public ActionResult Put(int id, [FromBody] ProductoPublicado producto)
+        public ActionResult Put(int id, [FromBody] ProductoAlquilado producto)
         {
 
 
@@ -80,9 +75,9 @@ namespace AlquilerTodo2Pesos.Server.Controllers
                 return BadRequest("No existe el Producto");
             }
 
-            var produ = context.ProductosPublicados.Where(e => e.Id == id).FirstOrDefault();
-
-
+            var produ = context.ProductosAlquilados.Where(e => e.Id == id).FirstOrDefault();
+           
+            
 
             if (produ == null)
             {
@@ -98,7 +93,7 @@ namespace AlquilerTodo2Pesos.Server.Controllers
             try
             {
                 //throw(new Exception("Cualquier Verdura"));
-                context.ProductosPublicados.Update(produ);
+                context.ProductosAlquilados.Update(produ);
                 context.SaveChanges();
                 return Ok();
             }
@@ -113,7 +108,7 @@ namespace AlquilerTodo2Pesos.Server.Controllers
         [HttpDelete("{id:int}")]
         public ActionResult Delete(int id)
         {
-            var produ = context.ProductosPublicados.Where(x => x.Id == id).FirstOrDefault();
+            var produ = context.ProductosAlquilados.Where(x => x.Id == id).FirstOrDefault();
 
             if (produ == null)
             {
@@ -122,7 +117,7 @@ namespace AlquilerTodo2Pesos.Server.Controllers
 
             try
             {
-                context.ProductosPublicados.Remove(produ);
+                context.ProductosAlquilados.Remove(produ);
                 context.SaveChanges();
                 return Ok($"El registro de {produ.NombreProducto} ha sido borrado.");
             }
@@ -131,7 +126,5 @@ namespace AlquilerTodo2Pesos.Server.Controllers
                 return BadRequest($"Los datos no pudieron eliminarse por: {e.Message}");
             }
         }
-
-
     }
 }

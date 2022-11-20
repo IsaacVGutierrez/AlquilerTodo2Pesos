@@ -14,6 +14,6 @@ namespace AlquilerBD.Data.Entidades
         [Required]
         public string Estados { get; set; }
 
-        public List<ProductoPublicado> Productos { get; set; }
+        public List<ProductoPublicado> ProductosPublicados { get; set; }
     }
 }
