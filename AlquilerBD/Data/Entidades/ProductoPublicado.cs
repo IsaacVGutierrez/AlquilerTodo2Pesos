@@ -27,19 +27,17 @@ namespace AlquilerBD.Data.Entidades
 
         public string foto { get; set; }
 
-        [Required]
+      
 
         public int CategoriaId { get; set; }
         public Categoria Categoria { get; set; }
 
         [Required]
 
+
         public int EstadoId { get; set; }
         public Estado Estado { get; set; }
 
-        [Required]
 
-        public int Personaid { get; set; }
-        public Persona Persona { get; set; }
     }
 }

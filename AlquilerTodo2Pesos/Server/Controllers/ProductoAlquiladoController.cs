@@ -25,7 +25,7 @@ namespace AlquilerTodo2Pesos.Server.Controllers
 
 
                                          .Include(m => m.Estado)
-                                          .Include(m => m.Persona)
+
                                              .ToListAsync();
 
           
@@ -38,7 +38,7 @@ namespace AlquilerTodo2Pesos.Server.Controllers
                                          .Where(e => e.Id == id)
                                          
                                          .Include(m => m.Estado)
-                                          .Include(m => m.Persona)
+
                                          .FirstOrDefaultAsync();
 
             if (venta == null)

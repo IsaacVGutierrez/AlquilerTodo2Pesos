@@ -26,12 +26,12 @@ namespace AlquilerBD.Data.Entidades
         [Required]
         public string foto { get; set; }
 
-        public int EstadoId { get; set; }
-        public Estado Estado { get; set; }
 
         [Required]
 
-        public int PersonaId { get; set; }
-        public Persona Persona { get; set; }
+        public int EstadoId { get; set; }
+        public Estado Estado { get; set; }
+
+
     }
 }
